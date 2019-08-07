@@ -5,9 +5,40 @@ SendMode Input ;
 SetWorkingDir %A_ScriptDir% ;
 #Include SAMP.ahk
 
+
 :?:/reload:: 
 showGameText("Reload", 1000, 6)
 Reload
+return
+
+
+F10 & 0::
+pid := getIdByPed(getTargetPed())
+if(pid!=-1 && pid!=""){
+	nick:=getPlayerNameById(pid)
+	;//-----------------------------
+	SiteStrik:= "{DCDCDC}Ð¡ÑƒÐ¼Ð¼Ð° Ð·Ð°Ð»Ð¾Ð³Ð° Ð¸Ð³Ñ€Ð¾ÐºÐ°{B22222} " nick " [" pid "]{DCDCDC}: `n{DCDCDC}Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð²Ñ‹Ð´ÐµÐ»Ð¸Ð»Ð¸ Ð½ÐµÐ²ÐµÑ€Ð½Ð¾Ð³Ð¾ Ð¸Ð³Ñ€Ð¾ÐºÐ° Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ{B22222} N{DCDCDC} Ð¸Ð»Ð¸ {B22222}n{DCDCDC}"
+	Showdialog("1", "{FFFAFA}Ð—Ð°Ð¿Ð¸ÑÑŒ Ð² Ð·Ð°Ð»Ð¾Ð³", SiteStrik, "Ok")
+	input, Payment, V, {Enter}
+	Keywait, Enter, D
+	sleep 300
+	SiteStrik:=""
+	addChatMessage("{B22222}[AHK]{00CD00} Ð¡ÐºÑ€Ð¸Ð¿Ñ‚Ð¸Ðº ÑÐ´ÐµÐ»Ð°Ð» Ð¡ÐµÑ€ Andrej Semr :P.")
+	if(Payment="N" || Payment="n" || Payment="" ){
+		addChatMessage("{B22222}[AHK]{00CD00} Ð’Ñ‹ {B22222}ÐžÐ¢ÐœÐ•ÐÐ˜Ð›Ð˜ {00CD00}Ð·Ð°Ð¿Ð¸ÑÑŒ Ð¸Ð³Ñ€Ð¾ÐºÐ°.")
+		return
+	}else{
+	;//-----------------------------
+		
+	FileAppend , %nick%`t%Payment%`n, NickName(UDO).txt
+	addChatMessage("{B22222}[AHK]{00CD00} Ð˜Ð³Ñ€Ð¾Ðº {B22222}Ð—ÐÐŸÐ˜Ð¡ÐÐ{00CD00} Ð² Ñ„Ð°Ð¹Ð».")
+	Sleep 500
+	Send,{F6}/unpunish{Space}
+	}
+}
+else {
+	addChatMessage("{B22222}[AHK]{00CD00} Ð˜Ð³Ñ€Ð¾Ðº Ð½Ðµ Ð²Ñ‹Ð±Ñ€Ð°Ð½")
+}
 return
 
 
@@ -16,10 +47,11 @@ a:=GetStrokNum1()
 b:=GetStrokNum2()
 c:=GetStrokNum3()
 d:=GetStrokNum4()
-	addChatMessage("{32CD32} Andrej Semr æåëàåò âàì ïðèÿòíûõ ïîäñ÷åòîâ ^_^")
+;{ // DialogParser
+	addChatMessage("{32CD32} Andrej Semr Ð¶ÐµÐ»Ð°ÐµÑ‚ Ð²Ð°Ð¼ Ð¿Ñ€Ð¸ÑÑ‚Ð½Ñ‹Ñ… Ð¿Ð¾Ð´ÑÑ‡ÐµÑ‚Ð¾Ð² ^_^")
 	Sleep, 500
 	addChatMessage1(a)
-	Showdialog("1", "{FFFAFA}Ñêîëüêî?", "ßùèêîâ:", "Ok")
+	Showdialog("1", "{FFFAFA}Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾?", "Ð¯Ñ‰Ð¸ÐºÐ¾Ð²:", "Ok")
 	input, rabotijasik, V, {Enter}
 	Keywait, Enter, D
 	sleep 300
@@ -27,7 +59,7 @@ d:=GetStrokNum4()
 		return
 	}
 	addChatMessage2(b)
-	Showdialog("1", "{FFFAFA}Ñêîëüêî?", "Åäû:", "Ok")
+	Showdialog("1", "{FFFAFA}Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾?", "Ð•Ð´Ñ‹:", "Ok")
 	input, rabotieda, V, {Enter}
 	Keywait, Enter, D
 	sleep 300
@@ -35,7 +67,7 @@ d:=GetStrokNum4()
 		return
 	}
 	addChatMessage3(c)
-	Showdialog("1", "{FFFAFA}Ñêîëüêî?", "Îäåæäû:", "Ok")
+	Showdialog("1", "{FFFAFA}Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾?", "ÐžÐ´ÐµÐ¶Ð´Ñ‹:", "Ok")
 	input, rabotiodezda, V, {Enter}
 	Keywait, Enter, D
 	sleep 300
@@ -43,7 +75,7 @@ d:=GetStrokNum4()
 		return
 	}
 	addChatMessage4(d)
-	Showdialog("1", "{FFFAFA}Ñêîëüêî?", "Ìóñîðà:", "Ok")
+	Showdialog("1", "{FFFAFA}Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾?", "ÐœÑƒÑÐ¾Ñ€Ð°:", "Ok")
 	input, rabotimusor, V, {Enter}
 	Keywait, Enter, D
 	sleep 300
@@ -52,7 +84,9 @@ d:=GetStrokNum4()
 	}
 	otv:=(rabotijasik)+(rabotieda)+(rabotiodezda)+(rabotimusor)
 	Schot(otv)
+;}
 return
+
 
 GetStrokNum1(){
 k:= getDialogLine(3)
@@ -78,30 +112,30 @@ return k
 Schot(otv){
 	OtvetRezult(otv)
 	if(otv>=500){
-		addChatMessage("{32CD32} Áîëåå 500 çàäàíèé - íà óñìîòðåíèå íà÷àëüíèêà òþðüìû, íî íå ìåíåå {32CD32}1.000.000$")
+		addChatMessage("{32CD32} Ð‘Ð¾Ð»ÐµÐµ 500 Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ - Ð½Ð° ÑƒÑÐ¼Ð¾Ñ‚Ñ€ÐµÐ½Ð¸Ðµ Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ð¸ÐºÐ° Ñ‚ÑŽÑ€ÑŒÐ¼Ñ‹, Ð½Ð¾ Ð½Ðµ Ð¼ÐµÐ½ÐµÐµ {32CD32}1.000.000$")
 	}else if( (otv>400)&&(otv<=500) ){
-		addChatMessage("{32CD32} Îò 400 äî 500 çàäàíèé - {32CD32}900.000$")
+		addChatMessage("{32CD32} ÐžÑ‚ 400 Ð´Ð¾ 500 Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ - {32CD32}900.000$")
 	}else if( (otv>300)&&(otv<=400) ){
-		addChatMessage("{32CD32} Îò 300 äî 400 çàäàíèé - {32CD32}800.000$")
+		addChatMessage("{32CD32} ÐžÑ‚ 300 Ð´Ð¾ 400 Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ - {32CD32}800.000$")
 	}else if( (otv>250)&&(otv<=300) ){
-		addChatMessage("{32CD32} Îò 250 äî 300 çàäàíèé - {32CD32}700.000$")
+		addChatMessage("{32CD32} ÐžÑ‚ 250 Ð´Ð¾ 300 Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ - {32CD32}700.000$")
 	}else if( (otv>200)&&(otv<=250) ){
-		addChatMessage("{32CD32} Îò 200 äî 250 çàäàíèé - {32CD32}600.000$")
+		addChatMessage("{32CD32} ÐžÑ‚ 200 Ð´Ð¾ 250 Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ - {32CD32}600.000$")
 	}else if( (otv>150)&&(otv<=200) ){
-		addChatMessage("{32CD32} Îò 150 äî 200 çàäàíèé - {32CD32}500.000$")
+		addChatMessage("{32CD32} ÐžÑ‚ 150 Ð´Ð¾ 200 Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ - {32CD32}500.000$")
 	}else if( (otv>100)&&(otv<=150) ){
-		addChatMessage("{32CD32} Îò 100 äî 150 çàäàíèé - {32CD32}400.000$")
+		addChatMessage("{32CD32} ÐžÑ‚ 100 Ð´Ð¾ 150 Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ - {32CD32}400.000$")
 	}else if( (otv>50)&&(otv<=100) ){
-		addChatMessage("{32CD32}Îò 50 äî 100 çàäàíèé - {32CD32}300.000$")
+		addChatMessage("{32CD32}ÐžÑ‚ 50 Ð´Ð¾ 100 Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ - {32CD32}300.000$")
 	}else{
-		addChatMessage("{32CD32} Ìåíåå 50 çàäàíèé - {32CD32}200.000$")
+		addChatMessage("{32CD32} ÐœÐµÐ½ÐµÐµ 50 Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ - {32CD32}200.000$")
 	}
 	return
 
 }
 OtvetRezult(otv){
 	addChatMessage("{32CD32}=====================================")
-	wText := "" "{32CD32} {32CD32} Ó èãðîêà ðàáîòû: {32CD32}" otv " "
+	wText := "" "{32CD32} {32CD32} Ð£ Ð¸Ð³Ñ€Ð¾ÐºÐ° Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹: {32CD32}" otv " "
 
     if(!checkHandles())
         return false
@@ -120,7 +154,7 @@ OtvetRezult(otv){
 }
 
 addChatMessage1(a) {
-    wText := "" "{32CD32} Â äàííûé ìîìåíò ó èãðîêà " a "{32CD32} ÿùèêîâ."
+    wText := "" "{32CD32} Ð’ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ñƒ Ð¸Ð³Ñ€Ð¾ÐºÐ° " a "{32CD32} ÑÑ‰Ð¸ÐºÐ¾Ð²."
 
     if(!checkHandles())
         return false
@@ -138,7 +172,7 @@ addChatMessage1(a) {
     return true
 }
 addChatMessage2(b){
-    wText := "" "{32CD32} Â äàííûé ìîìåíò èãðîêó íàäî ïðèãîòîâèòü " b "{32CD32} åäû."
+    wText := "" "{32CD32} Ð’ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð¸Ð³Ñ€Ð¾ÐºÑƒ Ð½Ð°Ð´Ð¾ Ð¿Ñ€Ð¸Ð³Ð¾Ñ‚Ð¾Ð²Ð¸Ñ‚ÑŒ " b "{32CD32} ÐµÐ´Ñ‹."
 
     if(!checkHandles())
         return false
@@ -157,7 +191,7 @@ addChatMessage2(b){
 }
 
 addChatMessage3(c) {
-    wText := "" "{32CD32} Â äàííûé ìîìåíò èãðîêó íàäî ïîñòèðàòü " c " {32CD32}îäåæäû."
+    wText := "" "{32CD32} Ð’ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð¸Ð³Ñ€Ð¾ÐºÑƒ Ð½Ð°Ð´Ð¾ Ð¿Ð¾ÑÑ‚Ð¸Ñ€Ð°Ñ‚ÑŒ " c " {32CD32}Ð¾Ð´ÐµÐ¶Ð´Ñ‹."
 
     if(!checkHandles())
         return false
@@ -176,7 +210,7 @@ addChatMessage3(c) {
 }
 
 addChatMessage4(d) {
-    wText := "" "{32CD32} Â äàííûé ìîìåíò èãðóêó íàäî âûíåñòè " d "{32CD32} ìóñîðà."
+    wText := "" "{32CD32} Ð’ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð¸Ð³Ñ€ÑƒÐºÑƒ Ð½Ð°Ð´Ð¾ Ð²Ñ‹Ð½ÐµÑÑ‚Ð¸ " d "{32CD32} Ð¼ÑƒÑÐ¾Ñ€Ð°."
 
     if(!checkHandles())
         return false
