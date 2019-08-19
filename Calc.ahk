@@ -112,7 +112,7 @@ return k
 Schot(otv){
 	OtvetRezult(otv)
 	if(otv>=500){
-		addChatMessage("{32CD32} Более 500 заданий - на усмотрение начальника тюрьмы, но не менее {32CD32}1.000.000$")
+		addChatMessage("{32CD32} Более 500 заданий - {32CD32}1.000.000$")
 	}else if( (otv>400)&&(otv<=500) ){
 		addChatMessage("{32CD32} От 400 до 500 заданий - {32CD32}900.000$")
 	}else if( (otv>300)&&(otv<=400) ){
