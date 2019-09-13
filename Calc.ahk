@@ -6,8 +6,8 @@ SetWorkingDir %A_ScriptDir% ;
 #Include SAMP.ahk
 
 
-;:?:/reload::
-!7::
+:?:/reload::
+;!7::
 showGameText("Reload", 1000, 6)
 Reload
 return
