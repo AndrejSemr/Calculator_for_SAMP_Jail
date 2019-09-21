@@ -15,6 +15,7 @@ return
 
 F10 & 0::
 pid := getIdByPed(getTargetPed())
+SendMessage, 0x50,, 0x4190419,, A  ;
 if(pid!=-1 && pid!=""){
 	playerName:=getPlayerNameById(pid)
 	;//-----------------------------
